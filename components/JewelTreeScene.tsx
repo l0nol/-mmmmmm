@@ -539,7 +539,8 @@ const JewelTreeScene: React.FC<JewelTreeSceneProps> = ({
     const pmremGenerator = new THREE.PMREMGenerator(renderer);
     scene.environment = pmremGenerator.fromScene(new RoomEnvironment(), 0.04).texture;
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+    // INCREASED AMBIENT LIGHT FOR ZOOM CLARITY
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4); 
     scene.add(ambientLight);
     
     const spotLight = new THREE.SpotLight(0xffddaa, 100);
@@ -1417,16 +1418,18 @@ const JewelTreeScene: React.FC<JewelTreeSceneProps> = ({
                 targetScale = 3.5;
                 group.lookAt(camera.position); 
 
-                // ZOOM MODE: Turn off emissive glow completely for clarity
+                // ZOOM MODE:
+                // 1. Photo: Completely matte and non-emissive for maximum clarity
                 if (photoMesh && photoMesh.material instanceof THREE.MeshStandardMaterial) {
-                     photoMesh.material.emissiveIntensity = 0.0; // NO GLOW
-                     photoMesh.material.roughness = 1.0; // MAX ROUGHNESS (MATTE)
+                     photoMesh.material.emissive.setHex(0x000000); // Black emissive
+                     photoMesh.material.emissiveIntensity = 0.0; // Zero intensity
+                     photoMesh.material.roughness = 1.0; // Matte
                      photoMesh.material.metalness = 0.0;
                 }
-                // Frame: Minimal glow to show selection
+                // 2. Frame: 5% Glow (0.05) as requested
                 if (frameMesh && frameMesh.material instanceof THREE.MeshStandardMaterial) {
                      frameMesh.material.emissive.setHex(0xFFD700);
-                     frameMesh.material.emissiveIntensity = 0.2; 
+                     frameMesh.material.emissiveIntensity = 0.05; 
                 }
 
             } else {

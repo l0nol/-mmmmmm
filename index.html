@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="https://fav.farm/🎄" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Interactive Jewel Christmas Tree" />
     <title>Jewel Christmas Tree</title>
@@ -22,6 +22,7 @@
         background-color: #000;
         overflow: hidden;
         touch-action: none;
+        overscroll-behavior: none;
       }
       canvas {
         display: block;
@@ -68,6 +69,5 @@
         </React.StrictMode>
       );
     </script>
-    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
