@@ -1,0 +1,7 @@
+{
+  "name": "Copy of  圣诞树完美修复1",
+  "description": "Interactive 3D Jewel Christmas Tree with touch controls, photo gallery, and floating ribbon.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
